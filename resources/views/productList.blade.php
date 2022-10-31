@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             Subcategory:<br>
-                            <input type="text" class="form-control" id="subcategory_id" name="subcategory_id" placeholder="Enter Subcategory Id" value="" maxlength="50" >
+                            <input type="number" class="form-control" id="subcategory_id" name="subcategory_id" placeholder="Enter Subcategory Id" value="" maxlength="50" >
                         </div>
                         <div class="form-group">
                             Thumbnail:<br>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="form-group">
                             Price:<br>
-                            <input type="text" class="form-control" id="Price" name="price" placeholder="Enter Price" value="" maxlength="50" >
+                            <input type="number" class="form-control" id="Price" name="price" placeholder="Enter Price" value="" maxlength="50" >
                         </div>
                         <br/>
                         <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save</button>
@@ -86,35 +86,35 @@
 <script type="text/javascript">
 
 
-    $(function(){
-        $('#createNewProduct').click(function () {
-            $('#saveBtn').val("create-product");
-            $('#product_id').val('');
-            $('#productForm').trigger("reset");
-            $('#modelHeading').html("Create New Product");
-            $('#modalCreate').modal('show');
-        });
+    // $(function(){
+    //     $('#createNewProduct').click(function () {
+    //         $('#saveBtn').val("create-product");
+    //         $('#product_id').val('');
+    //         $('#productForm').trigger("reset");
+    //         $('#modelHeading').html("Create New Product");
+    //         $('#modalCreate').modal('show');
+    //     });
         
-        $("#saveBtn").click(function(){
-            e.preventDefault();
-            $(this).html('Sending..');
-            $.ajax({
-                data: $('#productForm').serialize(),
-                url: "{{ route('product.store') }}",
-                type: "POST",
-                dataType: 'json',
-                success: function (data) {
-                    $('#productForm').trigger("reset");
-                    $('#ajaxModel').modal('hide');
-                    table.draw();
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                    $('#saveBtn').html('Save');
-                }
-            });
-        })
-    });
+    //     $("#saveBtn").click(function(e){
+    //         e.preventDefault();
+    //         //$(this).html('Sending..');
+    //         $.ajax({
+    //             data: $('#productForm').serialize(),
+    //             url: "{{route('product.store')}}",
+    //             type: "POST",
+    //             dataType: 'json',
+    //             success: function (data,  textStatus, jqXHR) {
+    //                 $('#productForm').trigger("reset");
+    //                 $('#ajaxModel').modal('hide');
+    //                 table.draw();
+    //             },
+    //             error: function (data, textStatus, errorThrown) {
+    //                 console.log('Error:', data);
+    //                 $('#saveBtn').html('Save');
+    //             }
+    //         });
+    //     })
+    // });
 
     function deleteProudct(id){
         let text = "Are you sure you want to delete this product?";
@@ -203,6 +203,36 @@
                 },
             ]
         });
+
+        $('#createNewProduct').click(function () {
+            $('#saveBtn').val("create-product");
+            $('#product_id').val('');
+            $('#productForm').trigger("reset");
+            $('#modelHeading').html("Create New Product");
+            $('#modalCreate').modal('show');
+        });
+        
+        $("#saveBtn").click(function(e){
+            e.preventDefault();
+            //$(this).html('Sending..');
+            $.ajax({
+                data: $('#productForm').serialize(),
+                url: "{{route('product.store')}}",
+                type: "POST",
+                dataType: 'json',
+                success: function (data,  textStatus, jqXHR) {
+                    $('#productForm').trigger("reset");
+                    $('#modalCreate').modal('hide');
+                    table.draw();
+                },
+                error: function (data, textStatus, errorThrown) {
+                    console.log('Error:', data);
+                    $('#saveBtn').html('Save');
+                }
+            });
+        })
+
+
     });
 </script>
 </body>

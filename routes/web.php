@@ -27,8 +27,8 @@ Route::get('/productList', [ProductController::class, 'index']);
 Route::post('/productList/all', [ProductController::class, 'getAllProducts']);
 Route::post('/product/delete/{id}', [ProductController::class, 'destroy']);
 
-//Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 // Route::get('/productList/delete', [ProductController::class, 'delete']);
 
-Route::resource('product', ProductController::class);
+//Route::resource('product', ProductController::class);
 
