@@ -30,14 +30,14 @@ class ProductController extends Controller
         $limit = $request->input('length');
         $start = $request->input('start');
         $searchValue = $request->input('search.value');
-
+        
         $allProductsCount = Product::count();
 
         if (!empty($searchValue)) {
             
             $filteredProducts = Product::join('subcategories','products.subcategory_id', '=', 'subcategories.subcategory_id')
                 ->join('categories','subcategories.category_id', '=', 'categories.category_id')
-                ->selectRaw('products.id as product_id,products.title as product_title , products.description, products.price, products.thumbnail, 
+                ->selectRaw('products.id as product_id, products.title as product_title , products.description, products.price, products.thumbnail, 
                             subcategories.title as subcategory_title,subcategories.id as subcategory_id, 
                             categories.title as category_title, categories.id as category_id')
                 ->skip($start)
@@ -50,7 +50,7 @@ class ProductController extends Controller
         } else {
             $filteredProducts =Product::join('subcategories','products.subcategory_id', '=', 'subcategories.id')
                 ->join('categories','subcategories.category_id', '=', 'categories.id')
-                ->selectRaw('products.id as product_id,products.title  as product_title , products.description, products.price, products.thumbnail, 
+                ->selectRaw('products.id as product_id,products.title as product_title , products.description, products.price, products.thumbnail, 
                 subcategories.title as subcategory_title,subcategories.id as subcategory_id, 
                 categories.title as category_title, categories.id as category_id')
                 ->skip($start)

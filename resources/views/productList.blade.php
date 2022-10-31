@@ -29,7 +29,7 @@
         <table class="table table-bordered data-table table-striped text-start w-100" id="product-table" >
         <thead>
             <tr style="text-align:center;">
-                <th>No</th>
+                <th>Product Id</th>
                 <th>Title</th>
                 <th>Thumbnail</th>
                 <th>Category</th>
@@ -84,37 +84,6 @@
 
     </div>
 <script type="text/javascript">
-
-
-    // $(function(){
-    //     $('#createNewProduct').click(function () {
-    //         $('#saveBtn').val("create-product");
-    //         $('#product_id').val('');
-    //         $('#productForm').trigger("reset");
-    //         $('#modelHeading').html("Create New Product");
-    //         $('#modalCreate').modal('show');
-    //     });
-        
-    //     $("#saveBtn").click(function(e){
-    //         e.preventDefault();
-    //         //$(this).html('Sending..');
-    //         $.ajax({
-    //             data: $('#productForm').serialize(),
-    //             url: "{{route('product.store')}}",
-    //             type: "POST",
-    //             dataType: 'json',
-    //             success: function (data,  textStatus, jqXHR) {
-    //                 $('#productForm').trigger("reset");
-    //                 $('#ajaxModel').modal('hide');
-    //                 table.draw();
-    //             },
-    //             error: function (data, textStatus, errorThrown) {
-    //                 console.log('Error:', data);
-    //                 $('#saveBtn').html('Save');
-    //             }
-    //         });
-    //     })
-    // });
 
     function deleteProudct(id){
         let text = "Are you sure you want to delete this product?";
